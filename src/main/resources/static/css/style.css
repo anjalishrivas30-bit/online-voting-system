@@ -1,0 +1,78 @@
+/* Online Voting System - modern sidebar layout on top of Bootstrap 5 */
+:root {
+  --ink: #14213d;
+  --ink-soft: #1d2d52;
+  --accent: #1f4fb4;
+  --accent-dark: #163a87;
+  --paper: #f1f4f8;
+  --line: #d8dee8;
+  --sidebar-width: 250px;
+}
+body { background: var(--paper); font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1c2434; }
+
+/* ---------- public pages (login / register) ---------- */
+.navbar-ballot { background: var(--ink); }
+.navbar-ballot .navbar-brand { font-weight: 600; letter-spacing: .2px; }
+.navbar-ballot .nav-link { color: #c9d3e6; }
+.navbar-ballot .nav-link:hover, .navbar-ballot .nav-link:focus { color: #fff; }
+
+/* ---------- app shell with sidebar ---------- */
+.sidebar {
+  position: fixed; top: 0; bottom: 0; left: 0; width: var(--sidebar-width);
+  background: var(--ink); color: #c9d3e6; display: flex; flex-direction: column;
+  overflow-y: auto; z-index: 1040; transition: transform .2s ease;
+}
+.sidebar-brand { display: block; padding: 1.25rem 1.25rem 1rem; color: #fff; font-weight: 600; font-size: 1.15rem; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.08); }
+.sidebar-brand:hover { color: #fff; }
+.sidebar-role { display: block; margin-top: .15rem; font-size: .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: #8fa3cc; }
+.sidebar-nav { padding: .75rem .75rem 1rem; display: flex; flex-direction: column; gap: .15rem; flex-grow: 1; }
+.sidebar-nav a, .sidebar-nav .sidebar-btn {
+  display: flex; align-items: center; gap: .7rem; padding: .6rem .8rem; border-radius: .5rem;
+  color: #c9d3e6; text-decoration: none; font-size: .95rem; background: none; border: 0; width: 100%; text-align: left;
+}
+.sidebar-nav a:hover, .sidebar-nav .sidebar-btn:hover { background: var(--ink-soft); color: #fff; }
+.sidebar-nav a.active { background: var(--accent); color: #fff; }
+.sidebar-nav i { font-size: 1.05rem; width: 1.2rem; text-align: center; }
+.sidebar-nav .nav-badge { margin-left: auto; }
+.sidebar-logout { margin-top: auto; padding-top: .75rem; border-top: 1px solid rgba(255,255,255,.08); }
+
+.content-area { margin-left: var(--sidebar-width); min-height: 100vh; display: flex; flex-direction: column; }
+.topbar { background: #fff; border-bottom: 1px solid var(--line); padding: .6rem 1.5rem; display: flex; align-items: center; gap: .75rem; position: sticky; top: 0; z-index: 1030; }
+.topbar-user { color: #3a465c; font-size: .95rem; }
+.page-body { padding: 1.5rem; flex-grow: 1; max-width: 1280px; width: 100%; }
+
+@media (max-width: 991.98px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: none; box-shadow: 0 0 0 100vmax rgba(0,0,0,.35); }
+  .content-area { margin-left: 0; }
+  .page-body { padding: 1rem; }
+}
+
+/* ---------- components ---------- */
+.btn-primary { background: var(--accent); border-color: var(--accent); }
+.btn-primary:hover, .btn-primary:focus { background: var(--accent-dark); border-color: var(--accent-dark); }
+.card { border: 1px solid var(--line); border-radius: .7rem; box-shadow: none; }
+.page-title { font-weight: 600; color: var(--ink); }
+.page-header { margin-bottom: 1.25rem; }
+
+.stat-card .card-body { display: flex; align-items: center; gap: 1rem; }
+.stat-icon { width: 2.9rem; height: 2.9rem; border-radius: .7rem; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0; }
+.stat-icon.blue { background: #e4edff; color: #1f4fb4; }
+.stat-icon.green { background: #e3f5ea; color: #198754; }
+.stat-icon.amber { background: #fff3d9; color: #b7791f; }
+.stat-icon.violet { background: #efe8fb; color: #6f42c1; }
+.stat-icon.red { background: #fde7e7; color: #c0392b; }
+.stat-number { font-size: 1.75rem; font-weight: 600; color: var(--ink); line-height: 1.1; }
+.stat-label { color: #5b6679; font-size: .88rem; }
+
+.table thead th { background: #e7ecf4; color: var(--ink); font-weight: 600; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.filter-pills .btn { border-radius: 2rem; }
+
+.ballot-option { cursor: pointer; border: 2px solid var(--line); border-radius: .6rem; padding: 1rem 1.1rem; background: #fff; display: block; }
+.ballot-option:hover { border-color: var(--accent); }
+.btn-check:checked + .ballot-option { border-color: var(--accent); background: #eaf0fc; }
+.btn-check:focus-visible + .ballot-option { outline: 3px solid #9db8ee; outline-offset: 2px; }
+.winner-banner { border-left: 6px solid #198754; background: #e9f6ef; }
+.footer-note { color: #6b7588; font-size: .85rem; }
+.detail-label { color: #5b6679; font-size: .85rem; margin-bottom: .1rem; }
+.detail-value { font-weight: 500; margin-bottom: 1rem; }

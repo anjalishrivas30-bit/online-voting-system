@@ -1,0 +1,24 @@
+target/
+
+.idea/
+
+*.iml
+
+.vscode/
+
+.classpath
+
+.project
+
+.settings/
+
+# Logs
+*.log
+
+# Environment / secret files
+.env
+.env.*
+
+# Local application configuration
+application-local.properties
+application-secret.properties
